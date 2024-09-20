@@ -59,24 +59,37 @@ document.addEventListener("click", (event) => {
 
 //------------------------------------------------- BD ---------------------------------------------//
 
+let productos 
+let frutas
+let verduras
 
 
-const frutas = [
-    {id: "6", categoria: "fruta", nombre:"Frutilla", img: "Frutilla.webp", precio: 239},
-    {id: "7", categoria: "fruta", nombre:"Naranja", img: "Naranja.webp", precio: 69},
-    {id: "8", categoria: "fruta", nombre:"Melon", img: "Melon.webp", precio: 179},
-    {id: "9", categoria: "fruta", nombre:"Manzana", img: "Manzana.webp", precio: 144},
-]
-const verduras = [
-    {id:"0", categoria: "verdura", nombre:"Lechuga", img: "Lechuga.webp", precio: 54},
-    {id: "1", categoria: "verdura", nombre:"Tomate", img: "Tomate.webp", precio: 249},
-    {id: "2", categoria: "verdura", nombre:"Zanahoria", img: "Zanahoria.webp", precio: 99},
-    {id: "3", categoria: "verdura", nombre:"Acelga", img: "Acelga.webp", precio: 69},
-    {id: "4", categoria: "verdura", nombre:"Calabacin", img: "Calabacin.webp", precio: 89},
-    {id: "5", categoria: "verdura", nombre:"Papa", img: "Papa.webp", precio: 94},
-]
+  function obtenerDatos() {
+    return new Promise((resolve, reject) => {
+      fetch('db/data.json')
+        .then(response => {
+          if (!response.ok) {
+            reject(new Error('Error en la respuesta de la red'));
+          } else {
+            return response.json();
+          }
+        })
+        .then(data => {
+           productos = data; 
+           frutas = data.filter(objeto => objeto.categoria === "fruta");
+           verduras = data.filter(objeto => objeto.categoria === "verdura");
+          
+          resolve({ productos, frutas, verduras });
+        })
+        .catch(error => {
+          reject('Hubo un problema con la petición: ' + error);
+        });
+    });
+  }
 
-const productos = verduras.concat(frutas);
+  obtenerDatos()
+
+  
 
 
 
@@ -144,13 +157,13 @@ const todo = document.getElementById("todo")
 
 todo.onclick = () => desgloseProductos(productos)
 
-const fruta = document.getElementById("fruta")
+const categoriaFruta = document.getElementById("fruta")
 
-fruta.onclick = () => desgloseProductos(frutas)
+categoriaFruta.onclick = () => desgloseProductos(frutas)
   
-const verdura = document.getElementById("verdura")
+const categoriaVerdura = document.getElementById("verdura")
 
-verdura.onclick = () => desgloseProductos(verduras)
+categoriaVerdura.onclick = () => desgloseProductos(verduras)
 
 
 
@@ -360,5 +373,4 @@ cargarHtml()
 
 
 //-------------------------------------------- Fin logica carrito -----------------------------------//
-
 

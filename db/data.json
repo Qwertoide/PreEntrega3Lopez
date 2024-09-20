@@ -1,0 +1,14 @@
+[
+
+    {"id":"0", "categoria": "verdura", "nombre":"Lechuga", "img": "Lechuga.webp", "precio": 54},
+    {"id": "1", "categoria": "verdura", "nombre":"Tomate", "img": "Tomate.webp", "precio": 249},
+    {"id": "2", "categoria": "verdura", "nombre":"Zanahoria", "img": "Zanahoria.webp", "precio": 99},
+    {"id": "3", "categoria": "verdura", "nombre":"Acelga", "img": "Acelga.webp", "precio": 69},
+    {"id": "4", "categoria": "verdura", "nombre":"Calabacin", "img": "Calabacin.webp", "precio": 89},
+    {"id": "5", "categoria": "verdura", "nombre":"Papa", "img": "Papa.webp", "precio": 94},    
+    {"id": "6", "categoria": "fruta", "nombre":"Frutilla", "img": "Frutilla.webp", "precio": 239},
+    {"id": "7", "categoria": "fruta", "nombre":"Naranja", "img": "Naranja.webp", "precio": 69},
+    {"id": "8", "categoria": "fruta", "nombre":"Melon", "img": "Melon.webp", "precio": 179},
+    {"id": "9", "categoria": "fruta", "nombre":"Manzana", "img": "Manzana.webp", "precio": 144}
+    
+]
